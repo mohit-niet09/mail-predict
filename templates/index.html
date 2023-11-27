@@ -1,0 +1,72 @@
+<html>
+  <head>
+    <title>ML API</title>
+    <style>
+      textarea {
+        width: 70%;
+        height: 150px;
+        padding: 12px 20px;
+        box-sizing: border-box;
+        border: 2px solid #ccc;
+        border-radius: 4px;
+        background-color: #f8f8f8;
+        font-size: 16px;
+        resize: none;
+      }
+      .button {
+        position: relative;
+        background-color: #04aa6d;
+        border: none;
+        font-size: 28px;
+        color: #ffffff;
+        padding: 20px;
+        width: 200px;
+        text-align: center;
+        transition-duration: 0.4s;
+        text-decoration: none;
+        overflow: hidden;
+        cursor: pointer;
+      }
+
+      .button:after {
+        content: "";
+        background: #f1f1f1;
+        display: block;
+        position: absolute;
+        padding-top: 300%;
+        padding-left: 350%;
+        margin-left: -20px !important;
+        margin-top: -120%;
+        opacity: 0;
+        transition: all 0.8s;
+      }
+
+      .button:active:after {
+        padding: 0;
+        margin: 0;
+        opacity: 1;
+        transition: 0s;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="login">
+      <h1>SMS Predictor: Check whether a SMS is spam or ham</h1>
+      <form action="{{url_for('predict')}}" method="post">
+        <textarea
+          placeholder="Enter the message that you want to check..."
+          autofocus
+          name="mail"
+          placeholder="Enter the message that you want to check..."
+          maxlength="10000"
+        >
+        </textarea
+        ><br />
+        <button type="submit" class="button">Predict</button>
+        <br />
+        <br />
+        {{prediction_text}}
+      </form>
+    </div>
+  </body>
+</html>
